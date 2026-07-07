@@ -74,8 +74,8 @@ graph TD
 La distribución de los estados remotos en el bucket global `garagorry-sre-tfstate-global` quedó organizada bajo el siguiente esquema jerárquico de aislamiento:
 
 ```
-iac-mastery_7/environments/us-east-1/web-cluster/terraform.tfstate
-iac-mastery_7/environments/us-west-2/web-cluster/terraform.tfstate
+aws-multi-region-sre-mastery/environments/us-east-1/web-cluster/terraform.tfstate
+aws-multi-region-sre-mastery/environments/us-west-2/web-cluster/terraform.tfstate
 ```
 
 ---
