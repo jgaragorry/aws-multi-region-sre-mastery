@@ -208,18 +208,10 @@ cd ../../../
 
 ### 7.2 Escaneo quirúrgico de recursos huérfanos
 
-**Virginia (us-east-1):**
+**Verifica Las 2 Regiones East and West and Backend:**
 
 ```bash
-aws ec2 describe-instances --region us-east-1 --filters "Name=tag:Lab,Values=iac-mastery_7" "Name=instance-state-name,Values=pending,running,shutting-down,stopping" --query "Reservations[*].Instances[*].InstanceId" --output table
-aws ssm describe-parameters --region us-east-1 --filters "Key=Name,Option=BeginsWith,Values=/sre/infra" --query "Parameters[*].Name" --output table
-```
-
-**Oregón (us-west-2):**
-
-```bash
-aws ec2 describe-instances --region us-west-2 --filters "Name=tag:Lab,Values=iac-mastery_7" "Name=instance-state-name,Values=pending,running,shutting-down,stopping" --query "Reservations[*].Instances[*].InstanceId" --output table
-aws ssm describe-parameters --region us-west-2 --filters "Key=Name,Option=BeginsWith,Values=/sre/infra" --query "Parameters[*].Name" --output table
+./scripts/auditoria_forense.sh
 ```
 
 > **Por qué se hace:** consultar directamente las APIs de AWS, en lugar de confiar en el `output` de `terragrunt destroy`, es la única forma de certificar que no quedó ningún recurso fuera del control de Terraform (por ejemplo, creado manualmente o desde otra ejecución).
